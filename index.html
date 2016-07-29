@@ -4,7 +4,6 @@
 <head>
     <script type="text/javascript">
         var cid = 10;
-        var onc = new Array();
 
         function changeid(id){
             if (cid==11) cid=id;
@@ -16,6 +15,7 @@
                 document.getElementById(cmd+"hint").style.visibility="visible"
                 return;
             }
+            cid=10;
             obj.innerHTML = cmd.toString();
             document.getElementById(cmd+"hint").style.visibility="hidden"
             var xmlhttp;
@@ -39,7 +39,7 @@
     <style type="text/css">
 
         * {
-            background: lightcyan;
+            background: ;
             text-align: center;
             margin: 0;
             border: 0;
@@ -49,7 +49,7 @@
             margin: 0;
             padding: 30px;
             border: 0;
-            background: #a2ffff;
+            background: #fff;
         }
 
         h2 {
@@ -74,12 +74,12 @@
             display: inline-block;
             outline: 0;
             padding: 6px 16px;
-            margin-bottom: 10px;
+            margin: 10px;
             vertical-align: middle;
             overflow: hidden;
             text-decoration: none;
-            color: #fff;
-            background-color: #F88E8B;
+            color: #000;
+            background-color: ;
             text-align: center;
             transition: .2s ease-out;
             cursor: pointer;
@@ -89,7 +89,7 @@
         }
 
         button:hover, a:hover, input#sub:hover {
-            background-color: #F45551;
+            background-color: ;
             color: #fff;
             text-decoration: none;
             font: 20px "Times New Roman";
@@ -132,8 +132,8 @@
     {% end %}
 </div>
 <div id="control">
-    <button id="put" value="put" onclick="loadXMLDoc(this, 'put')">put</button><span id="puthint" style="visibility:hidden  ">Choose the place you want to put</span><br>
-    <button id="get" value="get" onclick="loadXMLDoc(this, 'get')">get</button><span id="gethint" style="visibility:hidden">Choose the place you want to get</span>
+    <button id="put" value="put" onclick="loadXMLDoc(this, 'put')">put</button><!-- <span id="puthint" style="visibility:hidden  ">Choose the place you want to put</span><br>-->
+    <button id="get" value="get" onclick="loadXMLDoc(this, 'get')">get</button><!--<span id="gethint" style="visibility:hidden">Choose the place you want to get</span>-->
 </div>
 
 </body>
