@@ -37,7 +37,6 @@
         }
     </script>
     <style type="text/css">
-
         * {
             background: ;
             text-align: center;
@@ -45,97 +44,45 @@
             border: 0;
         }
 
-        h1 {
-            margin: 0;
-            padding: 30px;
-            border: 0;
-            background: #fff;
-        }
-
-        h2 {
-            margin: 0;
-            padding: 30px;
-            border: 0;
-        }
-
-        li {
-            margin: 0;
-            padding: 10px 0 10px 0;
-            border: 0;
-        }
-
-        form {
-            font: bold 24px "Times New Roman";
-            padding: 10px 0 10px 0;
-        }
-
-        button, a, input#sub {
-            border: none;
-            display: inline-block;
-            outline: 0;
-            padding: 6px 16px;
-            margin: 10px;
-            vertical-align: middle;
-            overflow: hidden;
-            text-decoration: none;
-            color: #000;
-            background-color: ;
-            text-align: center;
-            transition: .2s ease-out;
-            cursor: pointer;
-            white-space: nowrap;
-            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
-            font: 20px "Times New Roman";
-        }
-
-        button:hover, a:hover, input#sub:hover {
-            background-color: ;
-            color: #fff;
-            text-decoration: none;
-            font: 20px "Times New Roman";
-        }
-
-        input#txt {
-            margin: 10px;
-            padding: 5px 0 5px 0;
-            boder: 1px solid #ccc;
-            text-align: left;
-            background-color: #fff;
-            font: 15px "Times New Roman";
-        }
-
         img {
-            width: 10%;
+            width: 200px;
+            height: 200px;
         }
     </style>
     <meta charset="UTF-8">
     <title>Welcome</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 
 <body>
-
-<div id="header">
-    <h1>Shoes</h1>
+<div class="container">
+    <div class="page-header">
+        <h1>Shoes</h1>
+    </div>
+    <div class="row">
+        {% for i in range(8) %}
+            {% if l[i]=="n" %}
+                <img src="static/pics/0.jpg" class="img-thumbnail"/>
+            {% else %}
+                <img src="{{static_url('pics/' + str(i)+ '.jpg')}}" class="img-thumbnail" onclick="changeid({{i}})" />
+            {% end %}
+            {% if i==3 %}<br />{% end %}
+        {% end %}
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <button id="put" class="btn btn-primary" value="put" onclick="loadXMLDoc(this, 'put')">Save my shoe</button>
+        </div>
+        <div class="col-md-3">
+            <button id="get" class="btn btn-primary" value="get" onclick="loadXMLDoc(this, 'get')">Withdraw</button>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
 </div>
-<br>
-<div id="shelf">
-    {% for i in range(10) %}
-        {% if l[i]=="n" %}
-        <button id={{str(i)}} onclick="changeid({{i}})">{{str(i+1)}}</button>{% if i==4 %}<br>{% end %}
-        {% else %}
-        <img id={{str(i)}} onclick="changeid({{i}})" src="{{static_url("pics/"+str(i)+".jpg")}}" />
-        {% if i==4 %}<br>{% end %}
-        {%end%}
-
-    {% end %}
-</div>
-<div id="control">
-    <button id="put" value="put" onclick="loadXMLDoc(this, 'put')">put</button><!-- <span id="puthint" style="visibility:hidden  ">Choose the place you want to put</span><br>-->
-    <button id="get" value="get" onclick="loadXMLDoc(this, 'get')">get</button><!--<span id="gethint" style="visibility:hidden">Choose the place you want to get</span>-->
-</div>
-
 </body>
 
 </html>
